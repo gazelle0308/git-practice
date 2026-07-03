@@ -57,6 +57,14 @@ Linked_List* delete_node(Linked_List* node) {
     }
 
     Linked_List* next_node = node->R_Node;
+    Linked_List* prev_node = node->L_Node;
+
+    if (prev_node != NULL) {
+        prev_node->R_Node = next_node;
+    }
+    if (next_node != NULL) {
+        next_node->L_Node = prev_node;
+    }
     free(node);
     return next_node;
 
